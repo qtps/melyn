@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-import HeroTop from "../assets/images/hero-top.png";
-import HeroBottom from "../assets/images/hero-bottom.png";
+import HeroTop from "../assets/images/hero-top.svg";
+import HeroBottom from "../assets/images/hero-bottom.svg";
 import HeroMiddle from "../assets/images/hero.png";
 
 const Hero = () => {
