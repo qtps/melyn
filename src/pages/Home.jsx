@@ -1,3 +1,4 @@
+import Creators from "../components/Creators";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     <div>
       <Navbar />
       <Hero />
+      <Creators />
      
     </div>
   );

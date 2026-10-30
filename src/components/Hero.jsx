@@ -19,7 +19,7 @@ const Hero = () => {
         defaults: { ease: "power3.out", duration: 1.4 },
       });
 
-     
+      // Animation for the top image
       tl.fromTo(
         topImgRef.current,
         { x: "-100vw", opacity: 0 },
