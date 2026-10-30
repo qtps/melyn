@@ -1,1 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "tailwindcss";
+
+/* Bebas Neue font project-e globally/custom class hisebe babohar korte: */
+@theme {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  /* custom breakpoints */
+  --breakpoint-xs: 320px;
+  --breakpoint-ms: 375px;
+  --breakpoint-mm: 425px;
+}

@@ -148,7 +148,7 @@ const Creators = () => {
           </div>
         </div>
       </section>
-      <p className="container mx-auto text-start text-sm md:text-xl font-medium text-black mt-4 md:mt-12 px-4">
+      <p className="container mx-auto text-start text-sm md:text-xl font-medium text-black mt-4 md:mt-12 px-4 mb-4">
         [ We blend creativity, strategy <br /> and technology to help brands <br /> grow online ]
       </p>
     </>
