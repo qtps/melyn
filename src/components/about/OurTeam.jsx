@@ -1,10 +1,34 @@
 import { UserRound } from "lucide-react";
+import teamMember1 from "../../assets/images/team-member1.png";
+import teamMember2 from "../../assets/images/team-member2.png";
+import teamMember3 from "../../assets/images/team-member3.png";
+import teamMember4 from "../../assets/images/team-member4.png";
 
 const teamMembers = [
-  { name: "ALBERT FLORES", role: "SEO SPECIALIST", color: "bg-amber-400" },
-  { name: "CODY FISHER", role: "SEO SPECIALIST", color: "bg-purple-300" },
-  { name: "FLOYD MILES", role: "SEO SPECIALIST", color: "bg-orange-200" },
-  { name: "DEVON LANE", role: "SEO SPECIALIST", color: "bg-cyan-400" },
+  {
+    name: "ALBERT FLORES",
+    role: "SEO SPECIALIST",
+    color: "bg-amber-400",
+    image: teamMember1,
+  },
+  {
+    name: "CODY FISHER",
+    role: "SEO SPECIALIST",
+    color: "bg-purple-300",
+    image: teamMember2,
+  },
+  {
+    name: "FLOYD MILES",
+    role: "SEO SPECIALIST",
+    color: "bg-orange-200",
+    image: teamMember3,
+  },
+  {
+    name: "DEVON LANE",
+    role: "SEO SPECIALIST",
+    color: "bg-cyan-400",
+    image: teamMember4,
+  },
 ];
 
 const OurTeam = () => {
@@ -23,15 +47,21 @@ const OurTeam = () => {
             }`}
           >
             <div
-              role="img"
-              aria-label={`${member.name} portrait will be added here`}
-              className={`flex aspect-[4/5] items-center justify-center transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-black/15 ${member.color}`}
+              className={`flex aspect-4/5 items-center justify-center overflow-hidden transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-black/15 ${member.color}`}
             >
-              <UserRound
-                aria-hidden="true"
-                className="h-16 w-16 text-black/25 transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20"
-                strokeWidth={1.2}
-              />
+              {member.image ? (
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <UserRound
+                  aria-hidden="true"
+                  className="h-16 w-16 text-black/25 transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20"
+                  strokeWidth={1.2}
+                />
+              )}
             </div>
             <h3 className="mt-4 text-2xl leading-none text-black transition-colors duration-300 group-hover:text-[#08785f] sm:mt-5 sm:text-3xl font-bebas">
               {member.name}
