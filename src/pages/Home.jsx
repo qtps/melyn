@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import OurWorks from "../components/OurWorks";
 import VideoWall from "../components/VideoWall";
 import LatestArticle from "../components/LatestArticle";
+import Footer from "../components/Footer";
 const Home = () => {
   return (
     <div>
@@ -17,7 +18,7 @@ const Home = () => {
       <GreatWork />
       <VideoWall />
       <LatestArticle />
-     
+      <Footer />
     </div>
   );
 };

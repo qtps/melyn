@@ -13,7 +13,7 @@ const BrandMark = () => (
 
 const OurWorksCard = ({ logoText = "Nexora", stat, description, imageSrc }) => {
   return (
-    <div className="w-full min-h-110 bg-yellow-100 text-black p-4 sm:p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-8 shadow-2xl overflow-hidden">
+    <div className="w-full min-h-110 bg-gray-100 text-black p-4 sm:p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-8 shadow-2xl overflow-hidden">
       {/* Content Side */}
       <div className="w-full md:w-1/2 flex flex-col justify-between gap-3 md:gap-4">
         <div className="flex items-center gap-2">
