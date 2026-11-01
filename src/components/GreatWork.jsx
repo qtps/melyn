@@ -1,4 +1,4 @@
-import  { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import work1 from '../assets/images/work-1.png';
@@ -7,7 +7,6 @@ import work3 from '../assets/images/work-3.png';
 import work4 from '../assets/images/work-4.png';
 import work5 from '../assets/images/work-5.png';
 import ThumbsUp from '../assets/icons/thumbs-up.svg';
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,34 +101,39 @@ const GreatWork = () => {
   return (
     <section className="container mx-auto px-6 py-16 font-sans">
       {/* Header Section */}
+      <div className="flex justify-between items-start mb-16 border-b pb-6 gap-4">
+        <div>
+          <span className="text-xs tracking-widest text-gray-500 uppercase font-semibold">
+            FEATURED WORK
+          </span>
+          
+          <h2 className="text-3xl mm:text-4xl md:text-5xl font-black tracking-tight text-black mt-2 leading-none uppercase">
+            {/* Line 1: WE DO + Icon */}
+            <span className="flex items-center  whitespace-nowrap">
+              <span>WE DO</span>
+              <img 
+                src={ThumbsUp} 
+                alt="Thumbs Up" 
+                className="w-16 h-16 ms:w-18 ms:h-18 mm:w-18 mm:h-18 md:w-26 md:h-26 inline-block object-contain" 
+              />
+            </span>
 
+            {/* Line 2: GREAT WORK strictly on new line */}
+            <span className="block mt-1">
+              GREAT WORK
+            </span>
+          </h2>
+        </div>
 
-<div className="flex justify-between items-start mb-16 border-b pb-6">
-  <div>
-    <span className="text-xs tracking-widest text-gray-500 uppercase font-semibold">
-      FEATURED WORK
-    </span>
-    
-    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-black mt-2 leading-[0.85] uppercase">
-      <span className="inline-flex items-center ">
-        WE DO
-        <img src={ThumbsUp} alt="Thumbs Up" className="w-26 h-26 inline-block object-contain" />
-      </span>
-      <span className="block">
-        GREAT WORK
-      </span>
-    </h2>
-  </div>
-
-  <div>
-    <a
-      href="#all-works"
-      className="text-xs font-semibold tracking-wider text-black hover:opacity-70 transition-opacity uppercase"
-    >
-      [ SEE ALL WORKS ]
-    </a>
-  </div>
-</div>
+        <div>
+          <a
+            href="#all-works"
+            className="text-xs font-semibold tracking-wider text-black hover:opacity-70 transition-opacity uppercase whitespace-nowrap"
+          >
+            [ SEE ALL WORKS ]
+          </a>
+        </div>
+      </div>
 
       {/* Grid Layout (Staggered 2 columns) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
@@ -142,7 +146,7 @@ const GreatWork = () => {
             }`}
           >
             {/* Image Placeholder with Hover Zoom */}
-            <div className="relative w-full h-100 md:h-120 bg-gray-100 overflow-hidden mb-5">
+            <div className="relative w-full h-80 ms:h-96 md:h-120 bg-gray-100 overflow-hidden mb-5">
               {project.image ? (
                 <img
                   src={project.image}
@@ -174,7 +178,7 @@ const GreatWork = () => {
                 {project.tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className={`text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider  ${tag.bg}`}
+                    className={`text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider ${tag.bg}`}
                   >
                     {tag.name}
                   </span>
