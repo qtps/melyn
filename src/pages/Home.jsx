@@ -1,5 +1,5 @@
 import Creators from "../components/Creators";
-import FeatureWorks from "../components/FeatureWorks";
+import GreatWork from "../components/GreatWork";
 import Hero from "../components/Hero";
 import InspireGrowth from "../components/InspireGrowth";
 import Navbar from "../components/Navbar";
@@ -12,7 +12,7 @@ const Home = () => {
       <Creators />
       <InspireGrowth />
       <OurWorks />
-      <FeatureWorks />
+      <GreatWork />
      
     </div>
   );
