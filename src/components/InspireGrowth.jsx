@@ -76,7 +76,7 @@ const InspireGrowth = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4" ref={containerRef}>
+    <div className="w-full px-4" ref={containerRef}>
       {/* Header Section */}
       <div className="w-full md:w-3/4 lg:w-1/2 mx-auto flex flex-col items-center justify-center text-center py-16">
         <h4 className="pb-5 text-sm ms:text-base md:text-lg">

@@ -1,19 +1,47 @@
-import  { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OurWorksCard from "./OurWorksCard";
 
+import Project1 from "../assets/images/project-1.png";
+import Project2 from "../assets/images/project-2.png";
+import Project3 from "../assets/images/project-3.png";
+import Project4 from "../assets/images/project-4.png";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const WORKS = [
-  { id: 1, logoText: "Nexora", stat: "115.9%", description: "INCREASE IN ORGANIC VISITS AFTER 1 MONTH", imageSrc: "" },
-  { id: 2, logoText: "Vortex", stat: "240%", description: "BOOST IN USER ENGAGEMENT ACROSS ALL PLATFORMS", imageSrc: "" },
-  { id: 3, logoText: "Aura", stat: "3.5X", description: "GROWTH IN CONVERSION RATE WITHIN 90 DAYS", imageSrc: "" },
-  { id: 4, logoText: "Pulse", stat: "85%", description: "REDUCTION IN CUSTOMER ACQUISITION COST", imageSrc: "" },
+  {
+    id: 1,
+    logoText: "Nexora",
+    stat: "115.9%",
+    description: "INCREASE IN ORGANIC VISITS AFTER 1 MONTH",
+    imageSrc: Project1,
+  },
+  {
+    id: 2,
+    logoText: "Vortex",
+    stat: "240%",
+    description: "BOOST IN USER ENGAGEMENT ACROSS ALL PLATFORMS",
+    imageSrc: Project2,
+  },
+  {
+    id: 3,
+    logoText: "Aura",
+    stat: "3.5X",
+    description: "GROWTH IN CONVERSION RATE WITHIN 90 DAYS",
+    imageSrc: Project3,
+  },
+  {
+    id: 4,
+    logoText: "Pulse",
+    stat: "85%",
+    description: "REDUCTION IN CUSTOMER ACQUISITION COST",
+    imageSrc: Project4,
+  },
 ];
 
-// Where a card sits depending on how far back it is in the stack (0 = front).
-// Desktop: cards behind peek out to the left, shorter and a little see-through.
+// Desktop: cards behind peek out to the left
 const desktopState = (depth) => ({
   x: -depth * 40,
   y: 0,
@@ -22,16 +50,15 @@ const desktopState = (depth) => ({
   opacity: 1 - depth * 0.07,
 });
 
-// Mobile: cards behind peek out underneath.
+// Mobile: cards behind peek out underneath
 const mobileState = (depth) => ({
   x: 0,
-  y: depth * 16,
-  scaleX: 1 - depth * 0.06,
+  y: depth * 14,
+  scaleX: 1 - depth * 0.05,
   scaleY: 1,
-  opacity: 1 - depth * 0.07,
+  opacity: 1 - depth * 0.08,
 });
 
-// Smiley starburst sticker
 const STAR_POINTS = Array.from({ length: 20 }, (_, i) => {
   const angle = (i * Math.PI) / 10 - Math.PI / 2;
   const r = i % 2 === 0 ? 48 : 33;
@@ -42,7 +69,7 @@ const SmileySticker = () => (
   <svg
     viewBox="0 0 100 100"
     aria-hidden="true"
-    className="absolute -right-5 -bottom-3 sm:-right-8 sm:-bottom-5 md:-right-12 md:-bottom-8 w-10 h-10 sm:w-16 sm:h-16 md:w-24 md:h-24 rotate-12 z-10 pointer-events-none"
+    className="absolute -right-4 -bottom-2 sm:-right-8 sm:-bottom-5 md:-right-12 md:-bottom-8 w-8 h-8 sm:w-16 sm:h-16 md:w-24 md:h-24 rotate-12 z-10 pointer-events-none"
   >
     <polygon
       points={STAR_POINTS}
@@ -53,7 +80,13 @@ const SmileySticker = () => (
     />
     <circle cx="39" cy="46" r="3" fill="#1a1a1a" />
     <circle cx="61" cy="46" r="3" fill="#1a1a1a" />
-    <path d="M37 57 Q50 70 63 57" fill="none" stroke="#1a1a1a" strokeWidth="3.5" strokeLinecap="round" />
+    <path
+      d="M37 57 Q50 70 63 57"
+      fill="none"
+      stroke="#1a1a1a"
+      strokeWidth="3.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
@@ -66,12 +99,11 @@ const OurWorks = () => {
       const mm = gsap.matchMedia();
 
       const buildStack = ({ stateFor, exitVars, scrollPerCard }) => {
-        // 1. Arrange all cards in their stacked positions
+        // Arrange cards in initial stacked positions
         cards.forEach((card, i) => {
           gsap.set(card, { ...stateFor(i), xPercent: 0, yPercent: 0 });
         });
 
-        // 2. Pin the section and scrub through the reveal
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -84,10 +116,13 @@ const OurWorks = () => {
           },
         });
 
-        // 3. Front card leaves, the others move one step forward
         cards.forEach((card, i) => {
           if (i === cards.length - 1) return;
-          tl.to(card, { ...exitVars, opacity: 0, ease: "none" }, i);
+          tl.to(
+            card,
+            { ...exitVars, opacity: 0, autoAlpha: 0, ease: "none" },
+            i,
+          );
           cards.slice(i + 1).forEach((behind, offset) => {
             tl.to(behind, { ...stateFor(offset), ease: "none" }, i);
           });
@@ -95,11 +130,19 @@ const OurWorks = () => {
       };
 
       mm.add("(min-width: 768px)", () =>
-        buildStack({ stateFor: desktopState, exitVars: { xPercent: 140 }, scrollPerCard: 100 })
+        buildStack({
+          stateFor: desktopState,
+          exitVars: { xPercent: 140 },
+          scrollPerCard: 100,
+        }),
       );
 
       mm.add("(max-width: 767px)", () =>
-        buildStack({ stateFor: mobileState, exitVars: { yPercent: -120 }, scrollPerCard: 80 })
+        buildStack({
+          stateFor: mobileState,
+          exitVars: { yPercent: -140 },
+          scrollPerCard: 90,
+        }),
       );
     }, sectionRef);
 
@@ -109,8 +152,7 @@ const OurWorks = () => {
   return (
     <section
       ref={sectionRef}
-      className="container mx-auto min-h-200
-       text-white flex flex-col justify-center items-center py-12 px-4 relative overflow-hidden"
+      className="container mx-auto min-h-screen text-white flex flex-col justify-center items-center py-8 px-4 sm:px-6 md:py-12 relative overflow-hidden"
       style={{
         backgroundColor: "#00664F",
         backgroundImage: `
@@ -121,11 +163,11 @@ const OurWorks = () => {
       }}
     >
       {/* Heading */}
-      <div className="w-full text-center max-w-3xl mx-auto mb-10 md:mb-14 z-30">
-        <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wide uppercase text-white mb-3">
+      <div className="w-full text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-14 z-30">
+        <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-widest uppercase text-white/90 mb-2 sm:mb-3">
           Growth Impact Speed
         </p>
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-normal uppercase leading-[0.95] font-['Bebas_Neue']">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-normal uppercase leading-[0.95] font-['Bebas_Neue'] tracking-wide">
           The difference we make through our{" "}
           <span className="relative inline-block">
             work
@@ -134,9 +176,9 @@ const OurWorks = () => {
         </h2>
       </div>
 
-      {/* Card stack. The left padding leaves room for the cards peeking out behind. */}
-      <div className="relative w-full max-w-5xl mx-auto z-20 md:pl-30 pb-12 md:pb-0">
-        <div className="relative h-120 md:h-117.5">
+      {/* Card stack container */}
+      <div className="relative w-full max-w-5xl mx-auto z-20 md:pl-28 pt-2 pb-12 md:py-0">
+        <div className="relative h-130 sm:h-120 md:h-117.5">
           {WORKS.map((work, index) => (
             <div
               key={work.id}
