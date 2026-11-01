@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import InspireGrowth from "../components/InspireGrowth";
 import Navbar from "../components/Navbar";
 import OurWorks from "../components/OurWorks";
+import VideoWall from "../components/VideoWall";
 const Home = () => {
   return (
     <div>
@@ -13,6 +14,8 @@ const Home = () => {
       <InspireGrowth />
       <OurWorks />
       <GreatWork />
+      <VideoWall />
+
      
     </div>
   );
