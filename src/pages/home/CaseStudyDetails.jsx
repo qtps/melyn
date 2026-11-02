@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { caseStudyData } from "../../data/caseStudyData";
 
 const CaseStudyDetails = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const data = caseStudyData[id?.toLowerCase()];
 
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   if (!data) {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 py-20 text-center">
@@ -66,7 +71,15 @@ const CaseStudyDetails = () => {
 
       {/* 6. Middle Feature Banner / Preview Image */}
       <div className="w-full h-75 sm:h-112.5 bg-neutral-900 rounded-xl overflow-hidden mb-16 flex items-center justify-center">
-        <span className="text-gray-500 text-sm">[ Feature Image Placeholder ]</span>
+        {data.galleryImages && data.galleryImages[0] ? (
+          <img
+            src={data.galleryImages[0]}
+            alt={`${data.title} Feature`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-gray-500 text-sm">[ Feature Image Placeholder ]</span>
+        )}
       </div>
 
       {/* 7. Solutions Section */}
@@ -81,11 +94,28 @@ const CaseStudyDetails = () => {
 
       {/* 8. Bottom Grid Showcase (Two Columns Image) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="h-62.5 sm:h-87.5 bg-neutral-900 rounded-xl flex items-center justify-center">
-          <span className="text-gray-500 text-sm">[ Grid Image 1 ]</span>
+        <div className="h-62.5 sm:h-87.5 bg-neutral-900 rounded-xl overflow-hidden flex items-center justify-center">
+          {data.galleryImages && data.galleryImages[1] ? (
+            <img
+              src={data.galleryImages[1]}
+              alt={`${data.title} Grid 1`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-gray-500 text-sm">[ Grid Image 1 ]</span>
+          )}
         </div>
-        <div className="h-62.5 sm:h-87.5 bg-neutral-900 rounded-xl flex items-center justify-center">
-          <span className="text-gray-500 text-sm">[ Grid Image 2 ]</span>
+
+        <div className="h-62.5 sm:h-87.5 bg-neutral-900 rounded-xl overflow-hidden flex items-center justify-center">
+          {data.galleryImages && data.galleryImages[2] ? (
+            <img
+              src={data.galleryImages[2]}
+              alt={`${data.title} Grid 2`}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-gray-500 text-sm">[ Grid Image 2 ]</span>
+          )}
         </div>
       </div>
     </div>

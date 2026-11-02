@@ -3,10 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OurWorksCard from "./OurWorksCard";
 
-import Project1 from "../assets/images/project-1.png";
-import Project2 from "../assets/images/project-2.png";
-import Project3 from "../assets/images/project-3.png";
+import nexora from "../assets/images/nexora.png";
+import fyntra from "../assets/images/fyntra.png";
+import trivexa from "../assets/images/tirvexa.png";
 import Project4 from "../assets/images/project-4.png";
+
+import nexoraLogo from "../assets/icons/nexora.svg";
+import fyntraLogo from "../assets/icons/fyntra.svg";
+import trivexaLogo from "../assets/icons/trivexa.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,21 +20,27 @@ const WORKS = [
     logoText: "Nexora",
     stat: "115.9%",
     description: "INCREASE IN ORGANIC VISITS AFTER 1 MONTH",
-    imageSrc: Project1,
+    imageSrc: nexora,
+    logoSrc: nexoraLogo,
+    slug: "/home/casestudy",
   },
   {
     id: 2,
-    logoText: "Vortex",
+    logoText: "Fyntra",
     stat: "240%",
     description: "BOOST IN USER ENGAGEMENT ACROSS ALL PLATFORMS",
-    imageSrc: Project2,
+    imageSrc: fyntra,
+    logoSrc: fyntraLogo,
+    slug: "/home/casestudy", 
   },
   {
     id: 3,
-    logoText: "Aura",
+    logoText: "Trivexa",
     stat: "3.5X",
     description: "GROWTH IN CONVERSION RATE WITHIN 90 DAYS",
-    imageSrc: Project3,
+    imageSrc: trivexa,
+    logoSrc: trivexaLogo,
+    slug: "/home/casestudy", 
   },
   {
     id: 4,
@@ -38,6 +48,7 @@ const WORKS = [
     stat: "85%",
     description: "REDUCTION IN CUSTOMER ACQUISITION COST",
     imageSrc: Project4,
+    slug: "/home/casestudy", 
   },
 ];
 

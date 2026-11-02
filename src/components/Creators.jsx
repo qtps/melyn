@@ -44,14 +44,14 @@ const creatorsData = [
 
 const Creators = () => {
   const sliderRef = useRef(null);
-  const tweenRef = useRef(null); // GSAP animation reference thakar jonno
+  const tweenRef = useRef(null); 
 
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
 
     const ctx = gsap.context(() => {
-      // Animation-ti reference variable-e rekhe dewa hoyeche
+     
       tweenRef.current = gsap.to(slider, {
         xPercent: -50,
         ease: "none",
@@ -63,12 +63,11 @@ const Creators = () => {
     return () => ctx.revert();
   }, []);
 
-  // Mouse hover korle animation thambe
+  
   const handleMouseEnter = () => {
     if (tweenRef.current) tweenRef.current.pause();
   };
 
-  // Mouse soriye nile animation abar chalu hobe
   const handleMouseLeave = () => {
     if (tweenRef.current) tweenRef.current.play();
   };

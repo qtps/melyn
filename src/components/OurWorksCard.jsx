@@ -1,64 +1,55 @@
-import { useNavigate } from "react-router-dom"; // import React from "react";
 
-const BrandMark = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-7 sm:h-7 shrink-0" aria-hidden="true">
-    <circle cx="12" cy="12" r="10" fill="none" stroke="#2323ff" strokeWidth="2.5" />
-    <path
-      d="M7.5 13.5c1.5-3.5 7-4.5 9-1M16.5 10.5c-1.5 3.5-7 4.5-9 1"
-      fill="none"
-      stroke="#2323ff"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+import { Link } from "react-router-dom";
 
-const OurWorksCard = ({ logoText = "Nexora", stat, description, imageSrc, slug = "/home/casestudy" }) => {
-  const navigate = useNavigate(); // initialize the navigate function from react-router-dom
-
-  const handleNavigate = () => {
-    navigate(slug); // navagate function for navigating to the provided slug
-  };
-
+const OurWorksCard = ({ logoText, stat, description, imageSrc, logoSrc, slug }) => {
   return (
-    <div className="w-full min-h-110 bg-gray-100 text-black p-4 sm:p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-8 shadow-2xl overflow-hidden">
-      {/* Content Side */}
-      <div className="w-full md:w-1/2 flex flex-col justify-between gap-3 md:gap-4">
-        <div className="flex items-center gap-2">
-          <BrandMark />
-          <span className="font-['Bebas_Neue'] text-xl sm:text-2xl md:text-3xl leading-none tracking-wide">
-            {logoText}
-          </span>
+    <div className="w-full h-full bg-[#f4f5f5] text-black rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-between gap-6 shadow-lg">
+      <div className="w-full md:w-1/2 flex flex-col justify-between gap-6">
+        
+        {/* Logo Section */}
+        <div className="flex items-center gap-2 text-blue-600 font-semibold text-lg">
+          {logoSrc ? (
+            <img
+              src={logoSrc}
+              alt={`${logoText} logo`}
+              className="w-6 h-6 object-contain"
+            />
+          ) : (
+            <span className="w-6 h-6 border-2 border-current rounded-full flex items-center justify-center text-xs font-bold">
+              ◈
+            </span>
+          )}
+          <span className="text-black font-semibold">{logoText}</span>
         </div>
 
-        <div className="my-auto md:my-0">
-          <h3 className="font-['Bebas_Neue'] text-5xl sm:text-7xl md:text-8xl leading-none tracking-tight">
+        <div>
+          <h3 className="font-['Bebas_Neue'] text-6xl sm:text-8xl font-bold leading-none tracking-tight text-black">
             {stat}
           </h3>
-          <p className="mt-1 sm:mt-2 text-[11px] sm:text-xs md:text-base uppercase text-gray-700 max-w-xs leading-snug md:leading-relaxed">
+          <p className="mt-3 text-xs sm:text-sm font-semibold uppercase text-gray-600 tracking-wider max-w-xs leading-relaxed">
             {description}
           </p>
         </div>
 
-        {/* 4. onClick handler */}
-        <button
-          type="button"
-          onClick={handleNavigate}
-          className="group flex items-center gap-1.5 text-xs md:text-base uppercase font-semibold text-black hover:text-blue-600 transition-colors self-start mt-1 md:mt-0 cursor-pointer"
+        {/* 📍 Route Fix: relative position and z-index to ensure click event works properly */}
+        <Link
+          to={slug || `#`}
+          className="relative z-30 inline-flex items-center gap-2 text-xs sm:text-sm uppercase font-bold text-black hover:text-blue-600 transition-colors self-start mt-2 pointer-events-auto"
         >
           <span>View project</span>
-          <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-        </button>
+          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+            ↗
+          </span>
+        </Link>
       </div>
 
-      {/* Image / Preview Side */}
-      <div className="w-full md:w-1/2 h-40 sm:h-52 md:h-full shrink-0 md:shrink rounded-md md:rounded-md overflow-hidden bg-red-100 flex items-center justify-center ">
+      <div className="w-full md:w-1/2 min-h-55 sm:min-h-70 bg-gray-200 rounded-xl overflow-hidden relative flex items-center justify-center">
         {imageSrc ? (
           <img src={imageSrc} alt={logoText} className="w-full h-full object-cover" />
         ) : (
-          <span className="text-gray-400 text-xs sm:text-sm font-medium">
-            [ Project preview image ]
-          </span>
+          <div className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">
+            [ Image Placeholder ]
+          </div>
         )}
       </div>
     </div>

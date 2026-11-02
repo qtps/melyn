@@ -1,11 +1,15 @@
 // src/data/caseStudyData.js
+import NexoraHeroImg from "../assets/images/DetailsNexora.png";
+import NexoraGalleryImg1 from "../assets/images/DetailsNexora2.png";
+import NexoraGalleryImg2 from "../assets/images/DetailsNexora3.png";
+
 export const caseStudyData = {
   nexora: {
     title: "NEXORA",
     industry: "DESIGN AGENCY",
     client: "WIREFLOW",
     location: "NEW YORK, USA",
-    heroImage: "", // Image url pore diben
+    heroImage: NexoraHeroImg,
     overviewText:
       "IN JUST ONE MONTH, OUR AGENCY IMPLEMENTED A TARGETED SEO AND CONTENT STRATEGY FOR NEXORA THAT LED TO A SIGNIFICANT INCREASE IN ORGANIC TRAFFIC.",
     challengeTitle: "OUR CHALLENGE",
@@ -14,7 +18,7 @@ export const caseStudyData = {
     solutionsTitle: "OUR SOLUTIONS",
     solutionsText:
       "TO OVERCOME THE CHALLENGE, WE CONDUCTED AN IN-DEPTH SEO AUDIT AND COMPETITOR ANALYSIS TO PINPOINT OPPORTUNITIES FOR NEXORA.",
-    galleryImages: ["", "", ""], // Image URLs
+    galleryImages: [NexoraHeroImg, NexoraGalleryImg1, NexoraGalleryImg2], // 👈 ১ম
   },
   fyntra: {
     title: "FYNTRA",
@@ -43,5 +47,3 @@ export const caseStudyData = {
     galleryImages: ["", "", ""],
   },
 };
-
-

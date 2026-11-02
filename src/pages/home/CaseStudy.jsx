@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import nexoraImg from "../../assets/images/nexora.png";
+import fyntraImg from "../../assets/images/fyntra.png";
+import trivexaImg from "../../assets/images/tirvexa.png";
+import nexoraIcon from "../../assets/icons/nexora.svg";
+import fyntraIcon from "../../assets/icons/fyntra.svg";
+import trivexaIcon from "../../assets/icons/trivexa.svg";
 
 const caseStudiesData = [
   {
@@ -8,7 +14,8 @@ const caseStudiesData = [
     stat: "115.9%",
     description: "INCREASE IN ORGANIC VISITS AFTER 1 MONTH",
     slug: "/work/nexora",
-    imageSrc: "", 
+    imageSrc: nexoraImg,
+    icons: nexoraIcon,
   },
   {
     id: 2,
@@ -16,7 +23,8 @@ const caseStudiesData = [
     stat: "3.4X",
     description: "HIGHER CONVERSION RATE AFTER WEBSITE REDESIGN",
     slug: "/work/fyntra",
-    imageSrc: "",
+    imageSrc: fyntraImg,
+    icons: fyntraIcon,
   },
   {
     id: 3,
@@ -24,11 +32,17 @@ const caseStudiesData = [
     stat: "250%",
     description: "BOOST IN PAID AD ROI WITHIN 1 MONTH",
     slug: "/work/trivexa",
-    imageSrc: "",
+    imageSrc: trivexaImg,
+    icons: trivexaIcon,
   },
 ];
 
-const CaseStudey = () => {
+const CaseStudy = () => {
+ 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-12">
       <h2 className="animate-fade-up text-5xl sm:text-7xl font-bold font-['Bebas_Neue'] tracking-wider text-center mb-10 text-black uppercase">
@@ -36,7 +50,6 @@ const CaseStudey = () => {
       </h2>
 
       <div className="flex flex-col gap-8">
-        {/* 📍 ২. caseStudiesData */}
         {caseStudiesData.map((item, index) => (
           <div
             key={item.id}
@@ -44,10 +57,13 @@ const CaseStudey = () => {
             className="animate-fade-up opacity-0 group w-full bg-[#f4f5f5] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-between gap-6 transition-shadow duration-300 hover:shadow-xl"
           >
             <div className="w-full md:w-1/2 flex flex-col justify-between gap-6">
+              {/* Dynamic imported icon implementation */}
               <div className="flex items-center gap-2 text-blue-600 font-semibold text-lg">
-                <span className="w-6 h-6 border-2 border-current rounded-full flex items-center justify-center text-xs font-bold">
-                  ◈
-                </span>
+                <img
+                  src={item.icons}
+                  alt={`${item.company} icon`}
+                  className="w-6 h-6 object-contain"
+                />
                 <span className="text-black font-semibold">{item.company}</span>
               </div>
 
@@ -60,7 +76,6 @@ const CaseStudey = () => {
                 </p>
               </div>
 
-              {/* 📍 ৩. dynamic slug link */}
               <Link
                 to={item.slug}
                 className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase font-bold text-black group-hover:text-blue-600 transition-colors self-start mt-2"
@@ -88,4 +103,4 @@ const CaseStudey = () => {
   );
 };
 
-export default CaseStudey;
+export default CaseStudy;
