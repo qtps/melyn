@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"; // import React from "react";
+
 const BrandMark = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-7 sm:h-7 shrink-0" aria-hidden="true">
     <circle cx="12" cy="12" r="10" fill="none" stroke="#2323ff" strokeWidth="2.5" />
@@ -11,7 +13,13 @@ const BrandMark = () => (
   </svg>
 );
 
-const OurWorksCard = ({ logoText = "Nexora", stat, description, imageSrc }) => {
+const OurWorksCard = ({ logoText = "Nexora", stat, description, imageSrc, slug = "/home/casestudy" }) => {
+  const navigate = useNavigate(); // initialize the navigate function from react-router-dom
+
+  const handleNavigate = () => {
+    navigate(slug); // navagate function for navigating to the provided slug
+  };
+
   return (
     <div className="w-full min-h-110 bg-gray-100 text-black p-4 sm:p-6 md:p-10 flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-8 shadow-2xl overflow-hidden">
       {/* Content Side */}
@@ -32,9 +40,11 @@ const OurWorksCard = ({ logoText = "Nexora", stat, description, imageSrc }) => {
           </p>
         </div>
 
+        {/* 4. onClick handler */}
         <button
           type="button"
-          className="group flex items-center gap-1.5 text-xs md:text-base uppercase font-semibold text-black hover:text-blue-600 transition-colors self-start mt-1 md:mt-0"
+          onClick={handleNavigate}
+          className="group flex items-center gap-1.5 text-xs md:text-base uppercase font-semibold text-black hover:text-blue-600 transition-colors self-start mt-1 md:mt-0 cursor-pointer"
         >
           <span>View project</span>
           <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>

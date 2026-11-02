@@ -1,5 +1,5 @@
-import ServiceHero from "../components/services/ServiceHero";
-import InspireGrowth from "../components/InspireGrowth";
+import ServiceHero from "../../components/services/ServiceHero";
+import InspireGrowth from "../../components/InspireGrowth";
 
 const Services = () => {
   return (

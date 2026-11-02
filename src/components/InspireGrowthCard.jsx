@@ -51,9 +51,11 @@ const InspireGrowthCard = ({ title, badgeText, badgeBgColor, description, imageS
       </div>
     </div>
   );
+
 };
 
 export default InspireGrowthCard;
+
 
 
 
