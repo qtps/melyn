@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+import GreatWork from "../../components/GreatWork"; 
+
 const Work = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div>
-      <div className="p-10 text-center text-2xl font-bold">Work</div>
+    <div className="w-full">
+    
+      <GreatWork />
     </div>
   );
 };
