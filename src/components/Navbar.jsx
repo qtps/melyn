@@ -16,7 +16,7 @@ const Navbar = () => {
     "relative py-1 text-black hover:text-gray-600 transition-all duration-200 uppercase active:scale-95 transform origin-center select-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full";
 
   return (
-    <nav className="w-full bg-white border-gray-100">
+    <nav className="w-full bg-white border-b border-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center space-x-16">
@@ -56,15 +56,24 @@ const Navbar = () => {
               aria-label="Toggle Menu"
               className="md:hidden w-10 h-10 rounded-full border border-black flex items-center justify-center text-black hover:bg-gray-50 transition-all duration-150 active:scale-90 focus:outline-none select-none"
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {isOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-4">
-          <div className="flex flex-col items-start space-y-4 pt-2">
+      {/* স্মুথ ট্রানজিশন মোবাইল মেনু */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-gray-200 ${
+          isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
+        }`}
+      >
+        <div className="container mx-auto px-4 space-y-4">
+          <div className="flex flex-col items-start space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.to}
@@ -87,7 +96,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
