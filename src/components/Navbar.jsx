@@ -66,7 +66,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* স্মুথ ট্রানজিশন মোবাইল মেনু */}
+      {/* smooth transition for mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-gray-200 ${
           isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
